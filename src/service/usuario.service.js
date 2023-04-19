@@ -10,7 +10,7 @@ const findAllUsersService = () => {
 }
 
 const createUserService = (body) => {
-return Usuario.create(body);
+    return Usuario.create(body);
 }
 
 const updateUserService = (id, body) => {
@@ -22,11 +22,37 @@ const removeUserService = (id) => {
 }
 
 const addUserAddressService = (id, endereco) => {
-
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push: {
+                enderecos: endereco,
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
-const removeUserAddressService = (id) => {
-
+const removeUserAddressService = (id, addressId) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                enderecos: { 
+                    _id: addressId,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
 const addUserFavProductService = (id, produto) => {
