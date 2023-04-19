@@ -1,7 +1,7 @@
 const express = require('express');
-const connectToDatabase = require("./src/database/database");
+const connectToDatabase = require("./src/database/database"); // arquivo de conexão com o banco
 
-const usuario = require("./src/router/usuario.router");
+const usuario = require("./src/router/usuario.router"); //arquivo de rota do usuário
 
 const app = express();
 
@@ -11,10 +11,10 @@ app.use(express.json());
 
 
 
-connectToDatabase();
+connectToDatabase(); //conectando com o banco
 
 
-app.use("/usuario", usuario);
+app.use("/usuario", usuario); // chamando a rota do usuário
 
 app.get("/", (req, res) => {
     res.send({
