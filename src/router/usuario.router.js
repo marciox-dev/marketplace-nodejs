@@ -9,7 +9,7 @@ router.get("/findAll", usuarioController.findAllUsersController);
 //ROTAS POST
 router.post("/create", usuarioController.createUserController);
 router.post("/addAdress/:id", usuarioController.addUserAddressController);
-router.post("/addFavProduct/:id", usuarioController.addUserFavProduct);
+router.post("/addFavProduct/:id", usuarioController.addUserFavProductController);
 
 //ROTAS PUT
 router.put("/update/:id", usuarioController.updateUserController);
