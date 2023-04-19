@@ -11,7 +11,7 @@ const findUserByIdController = async (req,res) => {
         
     }catch (err){
         if(err.kind == "ObjectId"){
-            console.log(err.kind == "ObjectId");
+            
             return res.status(400).send({ message: `ID informado está incorreto. Tente novamente`});
         }
 
@@ -34,7 +34,7 @@ const createUserController = async (req, res) => {
     try {
         const body = req.body;
         if(!body.nome){
-            return res.staus(400).send({ message: `O campo "nome" precisa ser preenchido.`});
+            return res.status(400).send({ message: `O campo 'nome' precisa ser preenchido.`});
         }
 
         return res.status(201).send(await userService.createUserService(body));
@@ -49,7 +49,7 @@ const updateUserController = async (req,res) => {
     try {
         const body = req.body;
         if(!body.nome){
-            return res.staus(400).send({ message: `O campo "nome" precisa ser preenchido.`});
+            return res.status(400).send({ message: `O campo "nome" precisa ser preenchido.`});
         }
 
         return res.send(await userService.updateUserService(req.params.id, body));
@@ -64,11 +64,14 @@ const removeUserController = async (req,res) => {
     try {
         const deletedUser = await userService.removeUserService(req.params.id);
 
-        if(deletedUser.deletedCount > 0){
-            res.status(200).send({ message: `Usuário deletado`});
+        console.log(deletedUser);
+        res.status(200).send({ message: `Usuário deletado`});
+
+/*         if(deletedUser.deletedCount > 0){
+            
         }else{
             res.status(404).send({ message: `Usuário não encontrado, tente novamente!`});
-        }
+        } */
 
         
     } catch (err) {
