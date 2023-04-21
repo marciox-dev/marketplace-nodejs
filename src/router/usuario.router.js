@@ -6,7 +6,7 @@ const authMiddleware = require("../middleware/auth.middleware");
 
 //ROTAS GET
 router.get("/findById/:id", authMiddleware, usuarioController.findUserByIdController);
-router.get("/findAll", usuarioController.findAllUsersController);
+router.get("/findAll", authMiddleware, usuarioController.findAllUsersController);
 
 //ROTAS POST
 router.post("/create", usuarioController.createUserController);
