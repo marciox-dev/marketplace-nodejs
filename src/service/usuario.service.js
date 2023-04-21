@@ -1,4 +1,4 @@
-const { updateUserController, removeUserController } = require("../controller/usuario.controller");
+
 const Usuario = require("../model/Usuario");
 
 const findUserByIdService = (id) => {
@@ -45,7 +45,7 @@ const removeUserAddressService = (id, addressId) => {
         {
             $pull: {
                 enderecos: { 
-                    _id: addressId,
+                    _id: addressId
                 }
             }
         },
@@ -56,11 +56,40 @@ const removeUserAddressService = (id, addressId) => {
 }
 
 const addUserFavProductService = (id, produto) => {
-
+    console.log(produto)
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push: {
+                produtos_fav:{
+                    _id: produto._id,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
 const removeUserFavProductService = (produto) => {
-
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                produtos_fav:{
+                    _id: produto._id,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
 }
 
 module.exports = {
