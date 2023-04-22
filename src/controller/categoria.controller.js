@@ -3,7 +3,7 @@ const categoriaService = require("../service/categoria.service");
 const findCategoriaByIdController = async (req, res) => {
     try {
         res.status(200).send(await categoriaService.findCategoriaByIdService(req.params.id));
-    } catch (error) {
+    } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
@@ -12,31 +12,26 @@ const findCategoriaByIdController = async (req, res) => {
 const findAllCategoriaController = async (req, res) => {
     try {
         res.status(200).send(await categoriaService.findAllCategoriaService());
-    } catch (error) {
+    } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
-    return Categoria.findById(id);
-}
+};
 
 const createCategoriaController = async (req, res) => {
     try {
-       const corpo = {
-        ...req.body,
-        createdAt: new Date(),
-       }
-       res.status(201).send(await categoriaService.createCategoriaService(corpo));
-    } catch (error) {
+       res.status(201).send(await categoriaService.createCategoriaService(req.body));
+    } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
-    return Categoria.findById(id);
+    
 }
 
-const updateCategoriaController = async (id, body) => {
+const updateCategoriaController = async (req, res) => {
     try {
         res.status(200).send(await categoriaService.updateCategoriaService(req.params.id, req.body));
-    } catch (error) {
+    } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
@@ -46,7 +41,7 @@ const updateCategoriaController = async (id, body) => {
 const deleteCategoriaController = async (req, res) => {
     try {
         res.status(200).send(await categoriaService.deleteCategoriaService(req.params.id));
-    } catch (error) {
+    } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
