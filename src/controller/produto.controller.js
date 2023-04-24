@@ -4,7 +4,7 @@ const findProductByIdController = async (req, res) => {
     try{
         res.send(await produtoService.findProductByIdService(req.params.id));
     }catch{
-        console.log(`erro: ${err.message}`);
+        console.log(`err: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
 }
@@ -22,8 +22,7 @@ const createProductController = async (req, res) => {
     try{
         const corpo = {
             ...req.body,
-            userId: req.userId,
-            createdAt: new Date(),
+            userId: req.userId
         }
 
         res.send = (await produtoService.createProductService(corpo));
@@ -46,7 +45,7 @@ const deleteProductController = async (req, res) => {
     try{
         res.send(await produtoService.deleteProductService(req.params.id));
     }catch{
-        console.log(`erro: ${err.message}`);
+        console.log(`err: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
 };
@@ -55,7 +54,7 @@ const deleteProductController = async (req, res) => {
 const addCategoriaProdutoController = async (req, res) => {
     try{
             req.body.createdAt = new Date();
-            const categoria = await produtoService.addCategoriaProdutoService(req.paaram.id, req.body);
+            const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body);
             res.status(200).send(categoria);
     }catch(err){
         console.log(`erro: ${err.message}`);
@@ -65,10 +64,10 @@ const addCategoriaProdutoController = async (req, res) => {
 
 const removeCategoriaProdutoController = async (req,res) =>{
     try{
-        const categoria = await produtoService.removeCategoriaProdutoService(req.body);
+        const categoria = await produtoService.removeCategoriaProdutoService(req.params.id, req.body);
         res.status(200).send(categoria);
     }catch{
-        console.log(`erro: ${err.message}`);
+        console.log(`err: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
 }
