@@ -22,7 +22,7 @@ const deleteCategoriaService = (id) => {
 
 
 
-module. exports = {
+module.exports = {
 findCategoriaByIdService,
 findAllCategoriaService,
 createCategoriaService,

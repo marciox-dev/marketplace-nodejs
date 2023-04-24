@@ -5,8 +5,8 @@ const findUserByIdService = (id) => {
     return Usuario.findById(id);
 }
 
-const findAllUsersService = () => {
-    return Usuario.find();
+const findAllUsersService = (limit, offset) => {
+    return Usuario.find().limit(limit).skip(offset);
 }
 
 const createUserService = (body) => {
@@ -74,7 +74,7 @@ const addUserFavProductService = (id, produto) => {
     );
 }
 
-const removeUserFavProductService = (produto) => {
+const removeUserFavProductService = (id, produto) => {
     return Usuario.findOneAndUpdate(
         {
             _id: id,

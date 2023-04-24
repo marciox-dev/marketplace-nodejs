@@ -7,8 +7,7 @@ const findCategoriaByIdController = async (req, res) => {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
-    return Categoria.findById(id);
-} 
+};
 const findAllCategoriaController = async (req, res) => {
     try {
         res.status(200).send(await categoriaService.findAllCategoriaService());
@@ -26,7 +25,7 @@ const createCategoriaController = async (req, res) => {
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
     }
     
-}
+};
 
 const updateCategoriaController = async (req, res) => {
     try {
@@ -47,7 +46,7 @@ const deleteCategoriaController = async (req, res) => {
     }
 }
 
-module. exports = {
+module.exports = {
 findCategoriaByIdController,
 findAllCategoriaController,
 createCategoriaController,
