@@ -17,17 +17,17 @@ module.exports = async (req, res, next) => {
     const [schema, token] = parts;
 
     if(!/^Bearer$/i.test(schema)){
-        return res.status(401).send({ message: "Token mal formado"})
+        return res.status(401).send({ message: "Token mal formado" })
     }
 
     jwt.verify(token, process.env.SECRET, async (err, decoded) => {
         if(err){
-            return res.status(500).send({ message: "Token inválido"});
+            return res.status(500).send({ message: "Token inválido" });
         }
         const user = await findUserByIdService(decoded.id);
 
         if(!user || !user.id){
-            return res.status(401).send({ message: "Token inválido"})
+            return res.status(401).send({ message: "Token inválido" })
         }
 
         req.userId = decoded.id;
