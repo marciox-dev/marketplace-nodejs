@@ -118,15 +118,7 @@ const removeUserAddressController = async (req, res) => {
 
 const addUserFavProductController = async (req, res) => {
     try {
-        req.body.createdAt = new Date();
-        const endereco = await userService.addUserAddressService(req.params.id, req.body)
-        
-        if(endereco.ok == 1){
-            res.status(200).send({ message: `Endereço adicionado com sucesso!` });
-        }else{
-            res.status(400).send({ message: `Algo deu errado no endereço, tente novamente.` });
-        }
-
+     res.status(201).send(await userService.addUserFavProductService(req.params.id, req.body));
      } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
@@ -135,14 +127,7 @@ const addUserFavProductController = async (req, res) => {
 
 const removeUserFavProductController = async (req, res) => {
     try {
-        const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
-
-        if(endereco.ok == 1){
-            res.status(200).send({ message: `Endereço removido com sucesso!` });
-        }else{
-            res.status(400).send({ message: `Algo deu errado no endereço, não foi removido tente novamente.` });
-        }
-
+        res.status(201).send(await userService.removeUserFavProductService(req.params.id, req.body));
     } catch (err) {
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });

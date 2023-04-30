@@ -24,8 +24,8 @@ const createCarrinhoController = async (req, res) => {
             ...req.body,
             userId: req.userId
         }
-        res.status(201).send(await CarrinhoService.createCarrinhoService(req.params.id, corpo));
-    } catch (err) {
+        res.status(201).send(await CarrinhoService.createCarrinhoService(corpo));
+    }catch (err) {
        res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde!" });
         console.log(err.message);
     }
@@ -34,7 +34,7 @@ const createCarrinhoController = async (req, res) => {
 const updateCarrinhoController = async (req, res) => {
     try {
         res.status(200).send(await CarrinhoService.updateCarrinhoService(req.params.id, req.body));
-    } catch (err) {
+    }catch (err) {
        res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde!" });
         console.log(err.message);
     }
@@ -43,7 +43,7 @@ const updateCarrinhoController = async (req, res) => {
 const deleteCarrinhoController = async (req, res) => {
     try {
         res.status(200).send(await CarrinhoService.deleteCarrinhoService(req.params.id));
-    } catch (err) {
+    }catch (err) {
        res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde!" });
         console.log(err.message);
     }
