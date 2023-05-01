@@ -40,11 +40,23 @@ const deletePedidoController = async (req, res) => {
     }
 };
 
+const updateStatusPedidoController = async (req, res) => {
+    try{
+        res.status(200).send(await pedidoService.updateStatusPedidoService(req.params.id));
+    }catch(err){
+        console.log(`erro: ${err.message}`);
+        return res.status(500).send({ message: `Erro inesperado. Tente novamente!` });
+    }
+}
+
+
+
 
 
 module.exports = {
     findPedidoByIdController,
     findAllPedidosController,
     createPedidoController,
-    deletePedidoController
+    deletePedidoController,
+    updateStatusPedidoController
 }
