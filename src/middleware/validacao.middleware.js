@@ -23,6 +23,33 @@ const validaUsuario = (req, res, next) => {
     return next();
 }
 
+const validaEndereco = (req, res, next) => {
+    let erros = [];
+
+    req.body.map((value, key) => {
+        if(!value.rua){
+            erros.push(`'${key+1} - rua'`)
+        }
+        if(!value.numero){
+            erros.push(`'${key+1} - numero'`)
+        }
+        if(!value.CEP){
+            erros.push(`'${key+1} - CEP'`)
+        }
+    });
+
+        //testando quantos erros temos e decidindo o que fazer com relação a isso
+        if (erros.length == 0) {
+            return next();
+        } else {
+            if (erros.length > 1) {
+                return res.status(400).send({ message: `Os campos ${erros} precisam ser preenchidos!` });
+            } else {
+                return res.status(400).send({ message: `O campo ${erros} precisa ser preenchido.` })
+            }
+        }
+}
+
 const validaProduto = (req, res, next) => {
     let erros = []; //var para acumular os erros.
 
@@ -52,6 +79,33 @@ const validaProduto = (req, res, next) => {
             return res.status(400).send({ message: `O campo ${erros} precisa ser preenchido.` })
         }
     }
+}
+
+const validaProdutosCarrinhoPedido = (req, res, next) => {
+    let erros = [];
+
+    req.body.produtos.map((value, key) => {
+        if(!value._id){
+            erros.push(`'${key+1} - _id'`)
+        }
+        if(!ObjectId.isValid(value._id)){
+            erros.push(`'${key+1} - _id - tipo inválido'`)
+        }
+        if(!value.quantidade){
+            erros.push(`'${key+1} - quantidade'`)
+        }
+    });
+
+        //testando quantos erros temos e decidindo o que fazer com relação a isso
+        if (erros.length == 0) {
+            return next();
+        } else {
+            if (erros.length > 1) {
+                return res.status(400).send({ message: `Os campos ${erros} precisam ser preenchidos!` });
+            } else {
+                return res.status(400).send({ message: `O campo ${erros} precisa ser preenchido.` })
+            }
+        }
 }
 
 const validaCategoria = (req, res, next) => {
@@ -110,8 +164,16 @@ const validaCarrinho = (req, res, next) =>{
     }
 }
 
-const validaId = (req, res, next) => {
+const validaIdParams = (req, res, next) => {
     if(ObjectId.isValid(req.params.id)){
+        return next();
+    }else{
+        return res.status(400).send({ message: `O id não corresponde aos padrões necessários` });
+    }
+}
+
+const valida_IdBody = (req, res, next) => {
+    if(ObjectId.isValid(req.body._id)){
         return next();
     }else{
         return res.status(400).send({ message: `O id não corresponde aos padrões necessários` });
@@ -143,10 +205,13 @@ const validaLogin = (req, res, next) => {
 
 module.exports = {
     validaUsuario,
+    validaEndereco,
     validaProduto,
     validaCategoria,
+    validaProdutosCarrinhoPedido,
     validaPedido,
     validaCarrinho,
-    validaId,
+    validaIdParams,
+    valida_IdBody,
     validaLogin
 };
