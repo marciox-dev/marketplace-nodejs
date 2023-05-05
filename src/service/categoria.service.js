@@ -5,7 +5,7 @@ const findCategoriaByIdService = (id) => {
     return Categoria.findById(id);
 } 
 const findAllCategoriaService = () => {
-return Categoria.find();
+return Categoria.find().limit(limit).skip(offset);
 }
 
 const createCategoriaService = (body) => {
