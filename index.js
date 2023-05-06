@@ -8,6 +8,7 @@ const produto = require("./src/router/produto.router"); //arquivo de rota de pro
 const categoria = require('./src/router/categoria.router');//arquivo de rota de categoria
 const carrinho = require('./src/router/carrinho.router');//arquivo de rota de carrinho
 const pedido = require('./src/router/pedido.router');//arquivo de rota de pedido
+const docs= require('./src/router/docs.router');//arquivo de rota de docs
 
 //const { CommandStartedEvent } = require('mongodb');
 
@@ -28,6 +29,7 @@ app.use("/produto", produto); // chamando a rota de produto
 app.use("/categoria", categoria); // chamando a rota de categoria
 app.use("/carrinho", carrinho); // chamando a rota de carrinho
 app.use("/pedido", pedido); // chamando a rota de pedido
+app.use("/docs", docs); // chamando a rota de docs
 
 app.get("/", (req, res) => {
     res.send({
