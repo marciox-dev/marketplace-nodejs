@@ -1,6 +1,9 @@
 const express = require('express');
 require("dotenv").config();
+const cors = require("cors");
+
 const connectToDatabase = require("./src/database/database"); // arquivo de conexão com o banco
+
 
 const usuario = require("./src/router/usuario.router"); //arquivo de rota do usuário
 const auth = require("./src/router/auth.router"); //arquivo de rota autorização
@@ -8,7 +11,7 @@ const produto = require("./src/router/produto.router"); //arquivo de rota de pro
 const categoria = require('./src/router/categoria.router');//arquivo de rota de categoria
 const carrinho = require('./src/router/carrinho.router');//arquivo de rota de carrinho
 const pedido = require('./src/router/pedido.router');//arquivo de rota de pedido
-const docs= require('./src/router/docs.router');//arquivo de rota de docs
+const docs = require('./src/router/docs.router');//arquivo de rota de docs
 
 //const { CommandStartedEvent } = require('mongodb');
 
@@ -17,7 +20,12 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-
+app.use(cors(
+    {
+        origin: "localhost:3001",
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    }
+));
 
 
 connectToDatabase(); //conectando com o banco
