@@ -27,9 +27,7 @@ app.use(cors(
     }
 ));
 
-
 connectToDatabase(); //conectando com o banco
-
 
 app.use("/usuario", usuario); // chamando a rota do usuário
 app.use("/auth", auth); // chamando a rota de auth
