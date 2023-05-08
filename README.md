@@ -20,7 +20,7 @@ Todos os endpoints da nossa aplicação serão listados abaixo:
 
 Todos os endpoints de usuários listados abaixo.
 
-### /findById
+### /findById/:id
 
 
 | Código | Resposta                               |   |
@@ -32,8 +32,7 @@ Todos os endpoints de usuários listados abaixo.
 | Código | Resposta                                                      |   |
 | --------- | --------------------------------------------------------------- | --- |
 | 401     | Retorna o erro de autenticação                              |   |
-| 4044    | Retorna uma mensagem informando que não encontrou o usuário |   |
-
+| 404     | Retorna uma mensagem informando que não encontrou o usuário |   |
 
 Trecho do código do controller findById
 
@@ -59,6 +58,112 @@ const findUserByIdController = async (req, res) => {
 };
 ```
 ````
+
+### /findAll
+
+
+| Código | Resposta                                          |   |
+| --------- | --------------------------------------------------- | --- |
+| 200     | Retorna todos os usuários do banco de dados      |   |
+| 401     | Erro de autorização. Algum problema com o token |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Mensagem de erro interno                                  |   |
+
+### /create
+
+
+| Código | Resposta                                     |   |
+| --------- | ---------------------------------------------- | --- |
+| 201     | Retorna os dados do usuário criado no banco |   |
+| 500     | Erro no servidor                             |   |
+
+### /update/:id
+
+
+| Código | Resposta                                          |   |
+| --------- | --------------------------------------------------- | --- |
+| 200     | Retorna o objeto atualizado no banco de dados     |   |
+| 401     | Erro de autorização. Algum problema com o token |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
+
+### /remove/:id
+
+
+| Código | Resposta                                            |   |
+| --------- | ----------------------------------------------------- | --- |
+| 200     | Retorna o objeto que foi deletado do banco de dados |   |
+| 401     | Erro de autorização. Algum problema com o token   |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
+
+### /addAddress/:id
+
+
+| Código | Resposta                                          |   |
+| --------- | --------------------------------------------------- | --- |
+| 201     | Retorna o usuário com o seu endereço adicionado |   |
+| 401     | Erro de autorização. Algum problema com o token |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
+
+### /removeAddress
+
+
+| Código | Resposta                                          |   |
+| --------- | --------------------------------------------------- | --- |
+| 200     | Retorna o usuário com o seu endereço removido   |   |
+| 401     | Erro de autorização. Algum problema com o token |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
+
+### /addFavProduct/:id
+
+
+| Código | Resposta                                          |   |
+| --------- | --------------------------------------------------- | --- |
+| 201     | Retorna o usuário e o seu novo produto favorito  |   |
+| 401     | Erro de autorização. Algum problema com o token |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
+
+### /removeFavProduct/:id
+
+
+| Código | Resposta                                               |   |
+| --------- | -------------------------------------------------------- | --- |
+| 200     | Retorna o usuário com o seu produto favorito removido |   |
+| 401     | Erro de autorização. Algum problema com o token      |   |
+
+
+| Código | Resposta                                                  |   |
+| --------- | ----------------------------------------------------------- | --- |
+| 404     | Nenhum usuário encontrados com as informações passadas |   |
+| 500     | Erro no servidor                                          |   |
 
 Produto:
 
