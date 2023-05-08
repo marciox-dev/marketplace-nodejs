@@ -2,6 +2,10 @@
 
 o código do mais novo repositório de market place
 
+
+Código desenvolvido em JavaScript. 
+![NodeJS](https://ubunlog.com/wp-content/uploads/2020/04/about-nodejs.png "NodeJS")
+
 ## Instalação
 
 1. Baixe todo o código.
@@ -53,7 +57,6 @@ const findUserByIdController = async (req, res) => {
 };
 ```
 ````
-
 
 Produto:
 
