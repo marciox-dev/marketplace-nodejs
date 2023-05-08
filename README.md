@@ -2,8 +2,7 @@
 
 o código do mais novo repositório de market place
 
-
-Código desenvolvido em JavaScript. 
+Código desenvolvido em JavaScript.
 ![NodeJS](https://miro.medium.com/v2/resize:fit:1400/1*aeWo6e6FC8InJwBl3TmpDw.jpeg "NodeJS")
 
 ## Instalação
@@ -34,6 +33,9 @@ Todos os endpoints de usuários listados abaixo.
 | --------- | --------------------------------------------------------------- | --- |
 | 401     | Retorna o erro de autenticação                              |   |
 | 4044    | Retorna uma mensagem informando que não encontrou o usuário |   |
+
+
+Trecho do código do controller findById
 
 ````javascript
 const findUserByIdController = async (req, res) => {
