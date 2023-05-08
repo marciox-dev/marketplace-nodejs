@@ -4,7 +4,7 @@ o código do mais novo repositório de market place
 
 
 Código desenvolvido em JavaScript. 
-![NodeJS](https://ubunlog.com/wp-content/uploads/2020/04/about-nodejs.png "NodeJS")
+![NodeJS](https://miro.medium.com/v2/resize:fit:1400/1*aeWo6e6FC8InJwBl3TmpDw.jpeg "NodeJS")
 
 ## Instalação
 
