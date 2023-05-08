@@ -16,10 +16,6 @@ Código desenvolvido em JavaScript.
 
 Todos os endpoints da nossa aplicação serão listados abaixo:
 
-### Usuário:
-
-Todos os endpoints de usuários listados abaixo.
-
 ### /findById/:id
 
 
@@ -164,6 +160,13 @@ const findUserByIdController = async (req, res) => {
 | --------- | ----------------------------------------------------------- | --- |
 | 404     | Nenhum usuário encontrados com as informações passadas |   |
 | 500     | Erro no servidor                                          |   |
+
+
+
+---
+
+
+
 
 Produto:
 
